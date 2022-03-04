@@ -16,6 +16,7 @@ namespace Course_Managment_Application.Models
 
         public Group(int fullname,int groupno, Categories category)   
         {
+            
             switch (category)
             {
                 case Categories.Programming:
@@ -32,8 +33,25 @@ namespace Course_Managment_Application.Models
             }
 
             Category = category;
+
+            Students = new Student[fullname,groupno];
+
+            for (int i = 0; i < fullname; i++)
+            {
+                for (int j = 0; j < groupno; j++)
+                {
+                    Student student = new Student(fullname + 1, groupno + 1,type:false);
+                    Students[i,j] = student;
+
+                }
+            }
+            count++;
+
             
-            Students = new Student[fullname, groupno];
+            
+
+
+            
 
 
         }

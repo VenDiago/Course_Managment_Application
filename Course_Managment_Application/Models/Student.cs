@@ -10,14 +10,15 @@ namespace Course_Managment_Application.Enum
         public int GroupNo;
         public bool Type;
 
-        public Student(int fullname,int groupNo)
+        public Student(int fullname,int groupno,bool type)
         {
             Fullname = fullname;
-            GroupNo = groupNo;
+            GroupNo = groupno;
             Type = false;
 
-
+           
         }
+      
 
 
 
