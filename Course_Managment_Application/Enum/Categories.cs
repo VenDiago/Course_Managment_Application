@@ -6,7 +6,7 @@ namespace Course_Managment_Application.Enum
 {
     enum Categories
     {
-        Programming,
+        Programming=1,
         Desing,
         System_Adminstration,
 

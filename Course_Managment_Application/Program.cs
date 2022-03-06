@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Course_Managment_Application.Enum;
+using Course_Managment_Application.Services;
+using System;
 
 namespace Course_Managment_Application
 {
@@ -26,10 +28,10 @@ namespace Course_Managment_Application
                     switch (selection)
                     {
                         case 1:
-                            Console.WriteLine("Please choose  value");
+                            MenuService.CreateGroupMenu();
                             break;
                         default:
-                            Console.WriteLine("Please choose valid number");
+                            Console.WriteLine("Please choose valid number program switch xetasi");
                             break;
                     }
                 }

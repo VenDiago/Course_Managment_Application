@@ -15,12 +15,16 @@ namespace Course_Managment_Application.Services
         private List<Student> _students = new List<Student>();
         public List<Student> Students => _students;
 
-        //public string CreateGroup(Categories category)
-        ////////{
-        //if (isonline = true)
-        //{
-
-        //}
+        public string CreateGroup(int isonline, int isoffline, Categories category)
+        {
+            if (isonline == 0 || isoffline == 0)
+            {
+                return "Please choose valid online or offline";
+            }
+            Group group = new Group(isonline, isoffline, category);
+            _groups.Add(group);
+            return group.No;
+        }
 
         //Group group = new Group(category);
         //_groups.Add(group);

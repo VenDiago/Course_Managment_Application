@@ -1,15 +1,80 @@
-﻿//using Course_Managment_Application.Enum;
-//using System;
-//using System.Collections.Generic;
-//using System.Text;
+﻿using Course_Managment_Application.Enum;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-//namespace Course_Managment_Application.Services
-//{
-//    static class MenuService
-//    {
-//        public static CourseService courseService=new CourseService();
+namespace Course_Managment_Application.Services
+{
+    static class MenuService
+    {
+        public static CourseService courseService = new CourseService();
 
-//        public static void CreateGroupMenu()
+        public static void CreateGroupMenu()
+        {
+            Console.WriteLine("Please choose value case1(1)");
+            int isonline;
+            string isonStr = Console.ReadLine();
+            bool resultIson = int.TryParse(isonStr, out isonline);
+
+            Console.WriteLine("Please choos value case1(2)");
+            int isoffline;
+            string isoffStr = Console.ReadLine();
+            bool resultIsoff = int.TryParse(isoffStr, out isoffline);
+
+
+
+            Console.WriteLine("Please choose (1)Online or (2)Offline");
+            //isonline-isoffline serti yazilasi yeri
+            //ugurlar...
+
+
+
+
+
+
+
+            if (resultIson && resultIsoff)
+            {
+                Console.WriteLine("Please choose a Category:");
+                foreach (Categories c in System.Enum.GetValues(typeof(Categories)))
+                {
+                    Console.WriteLine($"{(int)c}. {c}");
+                }
+                int category;
+                string catStr = Console.ReadLine();
+                bool resultCat = int.TryParse(catStr, out category);
+                if (resultCat)
+                {
+                    switch (category)
+                    {
+                        case (int)Categories.Programming:
+                             string No = courseService.CreateGroup(isonline, isoffline, Categories.Programming);
+                            Console.WriteLine($"{No} group succesfully created");
+                            break;
+                        case (int)Categories.Desing:
+                            No = courseService.CreateGroup(isonline, isoffline, Categories.Desing);
+                            Console.WriteLine($"{No} group succesfully created");
+                            break;
+                        case (int)Categories.System_Adminstration:
+                            No = courseService.CreateGroup(isonline, isoffline, Categories.System_Adminstration);
+                            Console.WriteLine($"{No} group succesfully created");
+                            break;
+                        default:
+                            Console.WriteLine("Please choose valid number");
+                            break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Please choose valid category");
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("Please choose correct value case1(3) else serti");
+            }
+        }
 //        {
 //            Console.WriteLine("Please choose (1)Online or (2)Offline");
 //            int total = 0;
@@ -22,45 +87,45 @@
 //            {
 //                online = true;
 //                Console.WriteLine(online);
-                
-//            }
-//            else if (total == '2')
-//            {
-//                offline = true;
-//                Console.WriteLine(offline);
-//            }
-//            if (bRet)
-//            {
-//                Console.WriteLine("Please choose category");
-//                foreach (Categories c in System.Enum.GetValues(typeof(Categories)))
-//                {
-//                    Console.WriteLine($"{(int)c}. {c}");
-//                }
-//                int category;
-//                string catStr = Console.ReadLine();
-//                bool resultCat = int.TryParse(catStr, out category);
-//                if (resultCat)
-//                {
-//                    switch (category)
-//                    {
-//                        case (int)Categories.Programming:
-//                            //string No = CourseService.CreateGroup(Categories.Programming);
-//                            //Console.WriteLine($"{No} group succesfully created");
-//                            break;
-//                        //case (int)Categories.Thriller:
-//                        //    No = cinemaServices.CreateHall(row, col, Categories.Thriller);
-//                        //    Console.WriteLine($"{No} hall succesfully created");
-//                        //    break;
-//                        //case (int)Categories.Drama:
-//                        //    No = cinemaServices.CreateHall(row, col, Categories.Drama);
-//                        //    Console.WriteLine($"{No} hall succesfully created");
-//                        //    break;
-//                        //default:
-//                        //    Console.WriteLine("Please choose valid number");
-//                        //    break;
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
+
+        //            }
+        //            else if (total == '2')
+        //            {
+        //                offline = true;
+        //                Console.WriteLine(offline);
+        //            }
+        //            if (bRet)
+        //            {
+        //                Console.WriteLine("Please choose category");
+        //                foreach (Categories c in System.Enum.GetValues(typeof(Categories)))
+        //                {
+        //                    Console.WriteLine($"{(int)c}. {c}");
+        //                }
+        //                int category;
+        //                string catStr = Console.ReadLine();
+        //                bool resultCat = int.TryParse(catStr, out category);
+        //                if (resultCat)
+        //                {
+        //                    switch (category)
+        //                    {
+        //                        case (int)Categories.Programming:
+        //                            //string No = CourseService.CreateGroup(Categories.Programming);
+        //                            //Console.WriteLine($"{No} group succesfully created");
+        //                            break;
+        //                        //case (int)Categories.Thriller:
+        //                        //    No = cinemaServices.CreateHall(row, col, Categories.Thriller);
+        //                        //    Console.WriteLine($"{No} hall succesfully created");
+        //                        //    break;
+        //                        //case (int)Categories.Drama:
+        //                        //    No = cinemaServices.CreateHall(row, col, Categories.Drama);
+        //                        //    Console.WriteLine($"{No} hall succesfully created");
+        //                        //    break;
+        //                        //default:
+        //                        //    Console.WriteLine("Please choose valid number");
+        //                        //    break;
+        //                    }
+        //                }
+        //            }
+        //        }
+    }
+}

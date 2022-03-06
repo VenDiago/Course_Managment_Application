@@ -10,10 +10,10 @@ namespace Course_Managment_Application.Models
         public static int count = 1;
         public string No;
         public Categories Category;
-        public int IsOnline;
-        public int IsOffline;
-        public int Limit;
-        //public  Student[,] Students;
+        //public int IsOnline;
+        //public int IsOffline;
+        //public int Limit;
+        public Student[,] Students;
         public Group[,] Groups;
         public Group(int isonline , int isoffline, Categories category)   
         {
@@ -35,20 +35,22 @@ namespace Course_Managment_Application.Models
 
             Category = category;
 
-            Groups = new Group[isonline, isoffline];
+            //xetali yib
 
-            for (int i = 0; i < isonline; i++)
-            {
-                for (int j = 0; j < isoffline; j++)
-                {
-                    Group group = new Group(isonline + 1, isoffline + 1,category);
-                    Groups[i, j] = group;
+            //Groups = new Group[isonline, isoffline];
+
+            //for (int i = 0; i < isonline; i++)
+            //{
+            //    for (int j = 0; j < isoffline; j++)
+            //    {
+            //        Group group = new Group(isonline + 1, isoffline + 1, category);
+            //        Groups[i, j] = group;
 
 
 
 
-                }
-            }
+            //    }
+            //}
             count++;
 
             
