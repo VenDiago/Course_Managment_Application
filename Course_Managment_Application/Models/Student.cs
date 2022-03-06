@@ -6,22 +6,17 @@ namespace Course_Managment_Application.Enum
 {
      class Student
     {
-        public int Fullname;
-        public int GroupNo;
+        public string Fullname;
+        public string GroupNo;
         public bool Type;
 
-        public Student(int fullname,int groupno,bool type)
+        public Student(string fullname,string groupno,bool type)
         {
             Fullname = fullname;
             GroupNo = groupno;
-            Type = false;
+            Type = type;
 
            
         }
-      
-
-
-
-
     }
 }

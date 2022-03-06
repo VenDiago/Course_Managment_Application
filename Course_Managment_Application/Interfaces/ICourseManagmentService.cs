@@ -9,12 +9,12 @@ namespace Course_Managment_Application.Interfaces
      interface ICourseManagmentService
     {
         public List<Group> Groups { get; }
-        public string CreateGroup(int fullname, int groupno, Categories category);
+        public string CreateGroup(int isonline, int isoffline, Categories category);
         public void GetAllGroups();
         public void GroupEdit(string no, string newNo);
         public void GetAllGroupStudents();
         public void GetAllStudents(string no);
-        public string CreateStudent(int fullname, int groupno);
+        public string CreateStudent(string fullname, string groupno);
         
 
     }

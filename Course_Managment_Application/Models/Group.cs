@@ -10,11 +10,12 @@ namespace Course_Managment_Application.Models
         public static int count = 1;
         public string No;
         public Categories Category;
-        public bool IsOnline;
+        public int IsOnline;
+        public int IsOffline;
         public int Limit;
-        public  Student[,] Students;
-
-        public Group(int fullname,int groupno, Categories category)   
+        //public  Student[,] Students;
+        public Group[,] Groups;
+        public Group(int isonline , int isoffline, Categories category)   
         {
             
             switch (category)
@@ -34,14 +35,17 @@ namespace Course_Managment_Application.Models
 
             Category = category;
 
-            Students = new Student[fullname,groupno];
+            Groups = new Group[isonline, isoffline];
 
-            for (int i = 0; i < fullname; i++)
+            for (int i = 0; i < isonline; i++)
             {
-                for (int j = 0; j < groupno; j++)
+                for (int j = 0; j < isoffline; j++)
                 {
-                    Student student = new Student(fullname + 1, groupno + 1,type:false);
-                    Students[i,j] = student;
+                    Group group = new Group(isonline + 1, isoffline + 1,category);
+                    Groups[i, j] = group;
+
+
+
 
                 }
             }

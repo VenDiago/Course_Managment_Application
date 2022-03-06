@@ -9,32 +9,32 @@ namespace Course_Managment_Application.Services
 {
     class CourseService : ICourseManagmentService
     {
-        List<Group> _groups = new List<Group>();
+        private List<Group> _groups = new List<Group>();
         public List<Group> Groups => _groups;
 
-        List<Student> _students = new List<Student>();
+        private List<Student> _students = new List<Student>();
         public List<Student> Students => _students;
 
-        public string CreateGroup(int fullname, int groupno, Categories category)
-        {
-            if (fullname <= 0 || groupno <= 0)
-            {
-                return "Please choose valid fullname or groupno";
-            }
+        //public string CreateGroup(Categories category)
+        ////////{
+        //if (isonline = true)
+        //{
 
-            Group group = new Group(fullname, groupno, category);
-            _groups.Add(group);
-            return group.No;
-            //return fullname.ToString();
-            //sehv kod /\
-        }
+        //}
 
-        public string CreateStudent(int fullname, int groupno)
+        //Group group = new Group(category);
+        //_groups.Add(group);
+        //return group.No;
+        //return fullname.ToString();
+        //sehv kod /\
+
+
+        public string CreateStudent(string fullname, string groupno)
         {
-            if (fullname <= 0 || groupno <= 0)
-            {
-                return "Please choose valid fullname or groupno";
-            }
+            //if ()
+            //{
+            //    return "Please choose valid fullname or groupno";
+            //}
 
             Student student = new Student(fullname, groupno, type: false);
             _students.Add(student);
@@ -116,7 +116,10 @@ namespace Course_Managment_Application.Services
         //    }
         //    return null;
         //}
+
     }
+
 }
-         
+
+
 

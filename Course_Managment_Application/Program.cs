@@ -29,6 +29,7 @@ namespace Course_Managment_Application
                             Console.WriteLine("Please choose  value");
                             break;
                         default:
+                            Console.WriteLine("Please choose valid number");
                             break;
                     }
                 }
