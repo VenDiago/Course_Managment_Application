@@ -12,4 +12,9 @@ namespace Course_Managment_Application.Enum
 
         
     }
+    enum Situation
+    {
+        Online=1,
+        Offline,
+    }
 }

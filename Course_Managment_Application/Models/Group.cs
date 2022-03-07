@@ -10,13 +10,18 @@ namespace Course_Managment_Application.Models
         public static int count = 1;
         public string No;
         public Categories Category;
-        //public int IsOnline;
-        //public int IsOffline;
+        public int IsOnline;
+        public int IsOffline;
+        public string Sectiom;
+        
         //public int Limit;
         public Student[,] Students;
         public Group[,] Groups;
-        public Group(int isonline , int isoffline, Categories category)   
+        public Group(int isonline , int isoffline,string sectiom, Categories category)   
         {
+            IsOnline = isonline;
+            IsOffline = isoffline;
+            Sectiom=sectiom;
             
             switch (category)
             {

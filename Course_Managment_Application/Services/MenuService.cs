@@ -23,41 +23,46 @@ namespace Course_Managment_Application.Services
 
 
 
-            Console.WriteLine("Please choose (1)Online or (2)Offline");
-            //isonline-isoffline serti yazilasi yeri
-            //ugurlar...
+            //Console.WriteLine("Please choose (1)Online or (2)Offline");
+            //int isonline;
+            //int isoffline;
+            //string str=Console.ReadLine();
+            //bool iSon = false;
+            //bool iSoff=false;
+            ////if (str.ToLower().Trim() == "1")
+            ////{
+            ////    iSon = true;
 
-
-
-
-
-
-
-            if (resultIson && resultIsoff)
+            ////}
+            ////bool resultIson = int.TryParse(str, out isonline)
+            ////else if (str.ToLower().Trim() == "2")
+            ////{
+            ////    iSoff = true;
+            ////    bool resultIsoff = int.TryParse(str, out isoffline);
+            ////}
+            ////Console.WriteLine("Please choose section:");
+            ////string sectiom = Console.ReadLine();
+            if (resultIson || resultIsoff)
             {
-                Console.WriteLine("Please choose a Category:");
-                foreach (Categories c in System.Enum.GetValues(typeof(Categories)))
+                Console.WriteLine("Please choose a Situation:");
+                foreach (Situation c in System.Enum.GetValues(typeof(Situation)))
                 {
                     Console.WriteLine($"{(int)c}. {c}");
                 }
-                int category;
-                string catStr = Console.ReadLine();
-                bool resultCat = int.TryParse(catStr, out category);
-                if (resultCat)
+                int situation;
+                string sitStr = Console.ReadLine();
+                bool resultSit = int.TryParse(sitStr, out situation);
+                if (resultSit)
                 {
-                    switch (category)
+                    switch (situation)
                     {
-                        case (int)Categories.Programming:
-                             string No = courseService.CreateGroup(isonline, isoffline, Categories.Programming);
-                            Console.WriteLine($"{No} group succesfully created");
+                        case (int)Situation.Online:
+                            string No = courseService.CreateGroup(isonline, isoffline, sectiom, Situation.Online);
+                            Console.WriteLine($"{No} Online group is succesfully created");
                             break;
-                        case (int)Categories.Desing:
-                            No = courseService.CreateGroup(isonline, isoffline, Categories.Desing);
-                            Console.WriteLine($"{No} group succesfully created");
-                            break;
-                        case (int)Categories.System_Adminstration:
-                            No = courseService.CreateGroup(isonline, isoffline, Categories.System_Adminstration);
-                            Console.WriteLine($"{No} group succesfully created");
+                        case (int)Situation.Offline:
+                            No = courseService.CreateGroup(isonline, isoffline, sectiom, Situation.Offline);
+                            Console.WriteLine($"{No} Offline group is succesfully created");
                             break;
                         default:
                             Console.WriteLine("Please choose valid number");
@@ -66,7 +71,7 @@ namespace Course_Managment_Application.Services
                 }
                 else
                 {
-                    Console.WriteLine("Please choose valid category");
+                    Console.WriteLine("Please choose valid situation");
                 }
 
             }
@@ -74,7 +79,111 @@ namespace Course_Managment_Application.Services
             {
                 Console.WriteLine("Please choose correct value case1(3) else serti");
             }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //    if (resultIsonn || resultIsoff)
+            //    {
+            //        Console.WriteLine("Please choose a Category:");
+            //        foreach (Categories c in System.Enum.GetValues(typeof(Categories)))
+            //        {
+            //            Console.WriteLine($"{(int)c}. {c}");
+            //        }
+            //        int category;
+            //        string catStr = Console.ReadLine();
+            //        bool resultCat = int.TryParse(catStr, out category);
+            //        if (resultCat)
+            //        {
+            //            switch (category)
+            //            {
+            //                case (int)Categories.Programming:
+            //                     string No = courseService.CreateGroup(isonline, isoffline,sectiom, Categories.Programming);
+            //                    Console.WriteLine($"{No} group succesfully created");
+            //                    break;
+            //                case (int)Categories.Desing:
+            //                    No = courseService.CreateGroup(isonline, isoffline,sectiom, Categories.Desing);
+            //                    Console.WriteLine($"{No} group succesfully created");
+            //                    break;
+            //                case (int)Categories.System_Adminstration:
+            //                    No = courseService.CreateGroup(isonline, isoffline,sectiom, Categories.System_Adminstration);
+            //                    Console.WriteLine($"{No} group succesfully created");
+            //                    break;
+            //                default:
+            //                    Console.WriteLine("Please choose valid number");
+            //                    break;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine("Please choose valid category");
+            //        }
+
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("Please choose correct value case1(3) else serti");
+            //    }
         }
+
+
+
+
 //        {
 //            Console.WriteLine("Please choose (1)Online or (2)Offline");
 //            int total = 0;
