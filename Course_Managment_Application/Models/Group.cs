@@ -12,8 +12,8 @@ namespace Course_Managment_Application.Models
         public string Nom;
         public Categories Category;
         public Situation Situation;
-        public int IsOnline;
-        public int IsOffline;
+        //public int IsOnline;
+        //public int IsOffline;
 
 
         //public int Limit;
@@ -37,9 +37,9 @@ namespace Course_Managment_Application.Models
             }
 
             Category = category;
-            count++;
+            //count++;
         }
-        public Group(int isonline, int isoffline, Situation situation)
+        public Group( Situation situation)
         {
             switch (situation)
             {
@@ -55,23 +55,25 @@ namespace Course_Managment_Application.Models
             Situation = situation;
             //count++;
         }
-        public Group(int isonline, int isoffline)
-        {
-            Groups = new Group[isonline, isoffline];
+        
 
-            for (int i = 0; i < isonline; i++)
-            {
-                for (int j = 0; j < isoffline; j++)
-                {
-                    Group group = new Group(i + 1, j + 1);
-                    Groups[i, j] = group;
-                }
-            }
-        }
+        //public Group(int isonline, int isoffline)
+        //{
+        //    Groups = new Group[isonline, isoffline];
+
+        //    for (int i = 0; i < isonline; i++)
+        //    {
+        //        for (int j = 0; j < isoffline; j++)
+        //        {
+        //            Group group = new Group(i + 1, j + 1);
+        //            Groups[i, j] = group;
+        //        }
+        //    }
+        //}
 
         public override string ToString()
         {
-            return $"No: {No}, Category: {Category}";
+            return $"No: {No}, Nom:{Nom}, Category: {Category}";
         }
 
 

@@ -10,7 +10,7 @@ namespace Course_Managment_Application.Interfaces
     {
         public List<Group> Groups { get; }
         public string CreateGroup(Categories category);
-        public string CreateSituation(int isonline, int isoffline, Situation situation);
+        public string CreateSituation(Situation situation);
         public void GetAllGroups();
         public void GroupEdit(string no, string newNo);
         public void GetAllGroupStudents();
