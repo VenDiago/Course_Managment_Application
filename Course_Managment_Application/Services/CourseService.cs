@@ -22,14 +22,10 @@ namespace Course_Managment_Application.Services
             _groups.Add(group);
             return group.No;
         }
-        public string CreateSituation(int isonline, int isoffline, Situation situation)
+        public string CreateSituation(Situation situation)
         {
-            if (isonline == 0 || isoffline == 0)
-            {
-                return "Please choose valid online or offline courseServic xetasi";
-            }
 
-            Group group = new Group(isonline, isoffline, situation);
+            Group group = new Group(situation);
             _groups.Add(group);
             return group.Nom;
         }
