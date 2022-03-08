@@ -15,115 +15,116 @@ namespace Course_Managment_Application.Services
         private List<Student> _students = new List<Student>();
         public List<Student> Students => _students;
 
-        public string CreateGroup(int isonline, int isoffline,string sectiom, Categories category)
+        public string CreateGroup(Categories category)
+        {
+            
+            Group group = new Group(category);
+            _groups.Add(group);
+            return group.No;
+        }
+        public string CreateSituation(int isonline, int isoffline, Situation situation)
         {
             if (isonline == 0 || isoffline == 0)
             {
                 return "Please choose valid online or offline courseServic xetasi";
             }
-            Group group = new Group(isonline, isoffline,sectiom, category);
+
+            Group group = new Group(isonline, isoffline, situation);
             _groups.Add(group);
-            return group.No;
+            return group.Nom;
         }
 
-        //Group group = new Group(category);
-        //_groups.Add(group);
-        //return group.No;
-        //return fullname.ToString();
-        //sehv kod /\
-
-
-        public string CreateStudent(string fullname, string groupno)
-        {
-            //if ()
-            //{
-            //    return "Please choose valid fullname or groupno";
-            //}
-
-            Student student = new Student(fullname, groupno, type: false);
-            _students.Add(student);
-            return CreateStudent(fullname, groupno);
-            //Yoxla bunu /\
-        }
-
-        public void GetAllGroups()
-        {
-            if (_groups.Count == 0)
+            public string CreateStudent(string fullname, string groupno)
             {
-                Console.WriteLine("There is no group in Course");
-                return;
+                //if ()
+                //{
+                //    return "Please choose valid fullname or groupno";
+                //}
+
+                Student student = new Student(fullname, groupno, type: false);
+                _students.Add(student);
+                return CreateStudent(fullname, groupno);
+                //Yoxla bunu /\
             }
-            foreach (Group group in _groups)
-            {
-                Console.WriteLine(group);
-            }
-        }
 
-        public void GetAllGroupStudents()
-        {
-
-        }
-
-        public void GetAllStudents(string no)
-        {
-            Group group = FindGroup(no);
-            if (group == null)
+            public void GetAllGroups()
             {
-                Console.WriteLine("Please choose valid hall no");
-                return;
-            }
-            foreach (Student student in group.Students)
-            {
-                Console.WriteLine(student);
-            }
-        }
-
-        public void GroupEdit(string no, string newNo)
-        {
-            Group existedGroup = FindGroup(no);
-            if (existedGroup != null)
-            {
-                Console.WriteLine("Please choose correct Group no");
-                return;
-            }
-            foreach (Group group in _groups)
-            {
-                if (group.No.ToLower().Trim() == newNo.ToLower().Trim())
+                if (_groups.Count == 0)
                 {
-                    Console.WriteLine($"{newNo} group already exist");
+                    Console.WriteLine("There is no group in Course");
                     return;
                 }
-            }
-            existedGroup.No = newNo.ToUpper();
-        }
-
-
-        public Group FindGroup(string no)
-        {
-            foreach (Group group in _groups)
-            {
-                if (group.No.ToLower().Trim() == no.ToLower().Trim())
+                foreach (Group group in _groups)
                 {
-                    return group;
+                    Console.WriteLine(group);
                 }
             }
-            return null;
-        }
-        //public Group FindStudent(string no)
-        //{
-        //    foreach (Student student in Group)
-        //    {
-        //        if (Group.No.ToLower().Trim() == no.ToLower().Trim())
-        //        {
-        //            return Group;
-        //        }
-        //    }
-        //    return null;
-        //}
 
+            public void GetAllGroupStudents()
+            {
+
+            }
+
+            public void GetAllStudents(string no)
+            {
+                Group group = FindGroup(no);
+                if (group == null)
+                {
+                    Console.WriteLine("Please choose valid hall no");
+                    return;
+                }
+                foreach (Student student in group.Students)
+                {
+                    Console.WriteLine(student);
+                }
+            }
+
+            public void GroupEdit(string no, string newNo)
+            {
+                Group existedGroup = FindGroup(no);
+                if (existedGroup != null)
+                {
+                    Console.WriteLine("Please choose correct Group no");
+                    return;
+                }
+                foreach (Group group in _groups)
+                {
+                    if (group.No.ToLower().Trim() == newNo.ToLower().Trim())
+                    {
+                        Console.WriteLine($"{newNo} group already exist");
+                        return;
+                    }
+                }
+                existedGroup.No = newNo.ToUpper();
+            }
+
+
+            public Group FindGroup(string no)
+            {
+                foreach (Group group in _groups)
+                {
+                    if (group.No.ToLower().Trim() == no.ToLower().Trim())
+                    {
+                        return group;
+                    }
+                }
+                return null;
+            }
+            //public Group FindStudent(string no)
+            //{
+            //    foreach (Student student in Group)
+            //    {
+            //        if (Group.No.ToLower().Trim() == no.ToLower().Trim())
+            //        {
+            //            return Group;
+            //        }
+            //    }
+            //    return null;
+            //}
+        
+
+        } 
     }
-
-}
 
 
 

@@ -9,20 +9,18 @@ namespace Course_Managment_Application.Models
     {
         public static int count = 1;
         public string No;
+        public string Nom;
         public Categories Category;
+        public Situation Situation;
         public int IsOnline;
         public int IsOffline;
-        public string Sectiom;
-        
+
+
         //public int Limit;
         public Student[,] Students;
         public Group[,] Groups;
-        public Group(int isonline , int isoffline,string sectiom, Categories category)   
+        public Group(Categories category)
         {
-            IsOnline = isonline;
-            IsOffline = isoffline;
-            Sectiom=sectiom;
-            
             switch (category)
             {
                 case Categories.Programming:
@@ -39,34 +37,47 @@ namespace Course_Managment_Application.Models
             }
 
             Category = category;
-
-            //xetali yib
-
-            //Groups = new Group[isonline, isoffline];
-
-            //for (int i = 0; i < isonline; i++)
-            //{
-            //    for (int j = 0; j < isoffline; j++)
-            //    {
-            //        Group group = new Group(isonline + 1, isoffline + 1, category);
-            //        Groups[i, j] = group;
-
-
-
-
-            //    }
-            //}
             count++;
+        }
+        public Group(int isonline, int isoffline, Situation situation)
+        {
+            switch (situation)
+            {
+                case Situation.Online:
+                    Nom = $"On-{count}";
+                    break;
+                case Situation.Offline:
+                    Nom = $"Off-{count}";
+                    break;
+                default:
+                    break;
+            }
+            Situation = situation;
+            //count++;
+        }
+        public Group(int isonline, int isoffline)
+        {
+            Groups = new Group[isonline, isoffline];
 
-            
-            
-
-
-            
-
-
+            for (int i = 0; i < isonline; i++)
+            {
+                for (int j = 0; j < isoffline; j++)
+                {
+                    Group group = new Group(i + 1, j + 1);
+                    Groups[i, j] = group;
+                }
+            }
         }
 
-       
+        public override string ToString()
+        {
+            return $"No: {No}, Category: {Category}";
+        }
+
+
+
+
     }
 }
+
+            

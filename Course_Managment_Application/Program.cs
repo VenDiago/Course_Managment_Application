@@ -29,7 +29,9 @@ namespace Course_Managment_Application
                     {
                         case 1:
                             MenuService.CreateGroupMenu();
-                            Console.WriteLine();
+                            break;
+                        case 2:
+                            MenuService.GetAllGroupsMenu();
                             break;
                         default:
                             Console.WriteLine("Please choose valid number program switch xetasi");
