@@ -9,6 +9,7 @@ namespace Course_Managment_Application.Enum
         Programming=1,
         Desing,
         System_Adminstration,
+        
 
         
     }
@@ -16,5 +17,6 @@ namespace Course_Managment_Application.Enum
     {
         Online=1,
         Offline,
+        
     }
 }

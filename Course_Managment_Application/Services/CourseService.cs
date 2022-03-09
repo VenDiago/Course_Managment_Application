@@ -18,9 +18,11 @@ namespace Course_Managment_Application.Services
         public string CreateGroup(Categories category)
         {
 
+            //Group group = new Group(category);
+
             Group group = new Group(category);
             _groups.Add(group);
-            return group.No;
+            return group.Nom + group.No; 
         }
         public string CreateSituation(Situation situation)
         {

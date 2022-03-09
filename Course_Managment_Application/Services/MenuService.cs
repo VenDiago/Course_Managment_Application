@@ -26,11 +26,11 @@ namespace Course_Managment_Application.Services
                 case  (int)Situation.Online:
                     
                     string Nom = courseService.CreateSituation( Situation.Online);
-                    Console.WriteLine($"{Nom} Online group is succesfully created");
+                    Console.WriteLine($"{Nom} Online group is succesfully created\n");
                     break;
                 case (int)Situation.Offline:
                     Nom = courseService.CreateSituation( Situation.Offline);
-                    Console.WriteLine($"Offline group is succesfully created");
+                    Console.WriteLine($"{Nom} Offline group is succesfully created\n");
                     break;
                 default:
                     Console.WriteLine("Please choose valid number");
@@ -49,8 +49,9 @@ namespace Course_Managment_Application.Services
             {
                 case (int)Categories.Programming:
                     
+                    
                     string No = courseService.CreateGroup(Categories.Programming);
-                    Console.WriteLine($"({No}  group succesfully created");
+                    Console.WriteLine($"{No}  group succesfully created");
                     break;
                 case (int)Categories.Desing:
                     No = courseService.CreateGroup(Categories.Desing);
