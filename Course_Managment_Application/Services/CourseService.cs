@@ -4,6 +4,7 @@ using Course_Managment_Application.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Type = Course_Managment_Application.Enum.Type;
 
 namespace Course_Managment_Application.Services
 {
@@ -15,41 +16,39 @@ namespace Course_Managment_Application.Services
         private List<Student> _students = new List<Student>();
         public List<Student> Students => _students;
 
-        public string CreateGroup(Categories category)
+        public string CreateGroup(Situation situation, Categories category)
         {
-
-            //Group group = new Group(category);
-
-            Group group = new Group(category);
+            Group group = new Group(situation, category);
             _groups.Add(group);
-            return group.Nom + group.No; 
-        }
-        public string CreateSituation(Situation situation)
-        {
-
-            Group group = new Group(situation);
-            _groups.Add(group);
-            return group.Nom;
+            return group.No;
         }
 
-        public string CreateStudent(string fullname, string groupno)
+        public string CreateStudent(string fullname, string groupno, Type type)
         {
-            //if ()
-            //{
-            //    return "Please choose valid fullname or groupno";
-            //}
-
-            Student student = new Student(fullname, groupno, type: false);
-            _students.Add(student);
-            return CreateStudent(fullname, groupno);
-            //Yoxla bunu /\
+            Student student = new Student(fullname, groupno, type);
+            if (groupno != null)
+            {
+               Group _group=FindGroup(groupno);
+                if (_group != null)
+                {
+                    Students.Add(student);
+                    Console.WriteLine("Student Created.");
+                }
+                else
+                {
+                    Console.WriteLine("Group not existed");
+                    return "";
+                }
+            }
+            return student.GroupNo;
+            
         }
 
         public void GetAllGroups()
         {
             if (_groups.Count == 0)
             {
-                Console.WriteLine("There is no group in Course");
+                Console.WriteLine("There is no group in Course.");
                 return;
             }
             foreach (Group group in _groups)
@@ -58,20 +57,37 @@ namespace Course_Managment_Application.Services
             }
         }
 
-        public void GetAllGroupStudents()
-        {
-
-        }
-
-        public void GetAllStudents(string no)
+        public void GetAllGroupStudents(string no)
         {
             Group group = FindGroup(no);
             if (group == null)
             {
-                Console.WriteLine("Please choose valid hall no");
+                Console.WriteLine("Please choose valid group no:");
                 return;
             }
-            foreach (Student student in group.Students)
+            else if (Students.Count == 0)
+            {
+                Console.WriteLine("Empty group");
+            }
+            else
+            {
+                foreach (Student student in Students)
+                {
+                    Console.WriteLine(student);
+                }
+            }
+
+            
+        }
+
+        public void GetAllStudents()
+        {
+            if (_students.Count == 0)
+            {
+                Console.WriteLine("There is no student in Course");
+                return;
+            }
+            foreach (Student student in _students)
             {
                 Console.WriteLine(student);
             }
@@ -80,26 +96,27 @@ namespace Course_Managment_Application.Services
         public void GroupEdit(string no, string newNo)
         {
             Group existedGroup = FindGroup(no);
-            if (existedGroup != null)
+            if (existedGroup == null)
             {
-                Console.WriteLine("Please choose correct Group no");
+                Console.WriteLine("Please choose correct Group no:");
                 return;
             }
             foreach (Group group in _groups)
             {
                 if (group.No.ToLower().Trim() == newNo.ToLower().Trim())
                 {
-                    Console.WriteLine($"{newNo} group already exist");
+                    Console.WriteLine($"{newNo} group already exist.");
                     return;
                 }
             }
             existedGroup.No = newNo.ToUpper();
+            Console.WriteLine($"{no} group succesfully change to {newNo}");
         }
 
 
         public Group FindGroup(string no)
         {
-            foreach (Group group in _groups)
+            foreach (Group group in Groups)
             {
                 if (group.No.ToLower().Trim() == no.ToLower().Trim())
                 {
@@ -108,19 +125,6 @@ namespace Course_Managment_Application.Services
             }
             return null;
         }
-        //public Group FindStudent(string no)
-        //{
-        //    foreach (Student student in Group)
-        //    {
-        //        if (Group.No.ToLower().Trim() == no.ToLower().Trim())
-        //        {
-        //            return Group;
-        //        }
-        //    }
-        //    return null;
-        //}
-
-
     }
 }
 

@@ -4,19 +4,36 @@ using System.Text;
 
 namespace Course_Managment_Application.Enum
 {
-     class Student
+    class Student
     {
+        public int count = 1;
+        public string Tp;
         public string Fullname;
         public string GroupNo;
-        public bool Type;
-
-        public Student(string fullname,string groupno,bool type)
+        public Type type;
+        public Student(string fullname, string groupno, Type type)
         {
             Fullname = fullname;
             GroupNo = groupno;
-            Type = type;
 
-           
+            switch (type)
+            {
+                case Type.Zemanetli:
+                    Tp = $"Zemanetli";
+                    break;
+                case Type.Zemanetsiz:
+                    Tp = $"Zemanetsiz";
+                    break;
+                default:
+                    break;
+            }
+
+        }
+        public override string ToString()
+        {
+            
+            return $"Fullname:{Fullname},Groupno:{GroupNo},Type {Tp}";
         }
     }
+
 }

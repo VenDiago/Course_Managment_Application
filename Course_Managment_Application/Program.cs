@@ -9,7 +9,7 @@ namespace Course_Managment_Application
         static void Main(string[] args)
         {
             Console.WriteLine("Course Managment Application\n");
-            int selection=0;
+            int selection = 0;
             do
             {
                 Console.WriteLine("1. Create Group");
@@ -19,12 +19,12 @@ namespace Course_Managment_Application
                 Console.WriteLine("5. Get All Students");
                 Console.WriteLine("6. Create Student");
                 Console.WriteLine("0. Exit");
-                string strSelection=Console.ReadLine();
+                string strSelection = Console.ReadLine();
                 bool bRet = int.TryParse(strSelection, out selection);
 
                 if (bRet)
                 {
-                    
+
                     switch (selection)
                     {
                         case 1:
@@ -33,20 +33,25 @@ namespace Course_Managment_Application
                         case 2:
                             MenuService.GetAllGroupsMenu();
                             break;
+                        case 3:
+                            MenuService.GroupEditMenu();
+                            break;
+                        case 4:
+                            MenuService.GetAllGroupStudentsMenu();
+                            break;
+                        case 5:
+                            MenuService.GetAllStudentsMenu();
+                            break;
+                        case 6:
+                            MenuService.CreateStudentMenu();
+                            break;
+
                         default:
                             Console.WriteLine("Please choose valid number program switch xetasi");
                             break;
                     }
                 }
-            } while (selection!=0);
-            
-
-
-
-
-
-
-
+            } while (selection != 0);
         }
     }
 }

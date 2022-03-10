@@ -10,16 +10,10 @@ namespace Course_Managment_Application.Models
         public static int count = 1;
         public string No;
         public string Nom;
+        public int Limit;
         public Categories Category;
-        public Situation Situation;
-        //public int IsOnline;
-        //public int IsOffline;
-
-
-        //public int Limit;
         public Student[,] Students;
-        public Group[,] Groups;
-        public Group(Categories category)
+        public Group(Situation situation, Categories category)
         {
             switch (category)
             {
@@ -37,49 +31,24 @@ namespace Course_Managment_Application.Models
             }
 
             Category = category;
-            //count++;
-        }
-        public Group( Situation situation)
-        {
+            count++;
             switch (situation)
             {
                 case Situation.Online:
-                    Nom = $"On-{count}";
+                    Nom = $"On";
                     break;
                 case Situation.Offline:
-                    Nom = $"Off-{count}";
+                    Nom = $"Off";
                     break;
                 default:
                     break;
             }
-            Situation = situation;
-            //count++;
         }
-        
-
-        //public Group(int isonline, int isoffline)
-        //{
-        //    Groups = new Group[isonline, isoffline];
-
-        //    for (int i = 0; i < isonline; i++)
-        //    {
-        //        for (int j = 0; j < isoffline; j++)
-        //        {
-        //            Group group = new Group(i + 1, j + 1);
-        //            Groups[i, j] = group;
-        //        }
-        //    }
-        //}
-
         public override string ToString()
         {
-            return $"No: {No}, Nom:{Nom}, Category: {Category}";
+            return $"No: {No}, Situation:{Nom}, Category: {Category}";
         }
-
-
-
-
     }
 }
 
-            
+
